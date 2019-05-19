@@ -15,11 +15,13 @@ function parseTree(object) {
 
 export default {
   afterParse(state, results) {
+      state.loader= true;
     state.data = results.data;
     state.tree = parseTree(results.data.slice(0, 100));
+      state.loader= false;
   },
   selectFile(state, e) {
-    console.log(e.target.files)
+    console.log(e.target.files, "this is state",state)
     state.selectedFile = e.target.files[0];
   }
 };

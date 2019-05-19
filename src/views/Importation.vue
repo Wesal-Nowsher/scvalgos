@@ -20,20 +20,23 @@
       Upload
       <v-icon right dark>cloud_upload</v-icon>
     </v-btn>
+      // <div  v-if="loader"  class="loader"></div>
     <br />
+
     <v-btn color="primary" round class="white--text" v-if="doc" @click="save" download>
       Enregistrer le fichier
       <v-icon right dark>cloud_download</v-icon>
     </v-btn>
-    <!-- <a v-if="doc" @click="save" type="button" download>Enregistrer le fichier</a> -->
     <v-container fluid>
       <div class="body">
         <div class="entry">
+
           <v-treeview v-if="doc" :items="items"></v-treeview>
           <div v-else>No Data kindly import!</div>
         </div>
       </div>
     </v-container>
+
   </div>
 </template>
 
@@ -54,7 +57,8 @@ export default {
     ...mapState({
       doc: "data",
       items: "tree",
-      selectedFile: "selectedFile"
+      selectedFile: "selectedFile",
+      loader: true
     }),
     label() {
       return (this.selectedFile && this.selectedFile.name) || "no file chosen";
@@ -70,5 +74,28 @@ export default {
 }
 .hidden {
   display: none;
+}
+.loader {
+ border: 16px solid #186d66;
+     border-radius: 50%;
+     border-top: 16px solid #97020a;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+      left: 44%;
+      top: 72%;
+      position: absolute;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>

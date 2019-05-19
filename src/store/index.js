@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     data: null,
     tree: null,
-    selectedFile: null
+    selectedFile: null,
+      loader: false
   },
   mutations,
   actions
